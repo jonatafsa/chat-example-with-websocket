@@ -16,7 +16,7 @@ function App() {
   const [message, setMessage] = useState("")
   const [messages, setMessages] = useState<MessagesProps[]>([])
   const [token, setToken] = useState("")
-  const ws = Websocket
+  // const ws = Websocket
 
 
   return (
