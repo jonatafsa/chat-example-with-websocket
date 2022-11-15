@@ -1,0 +1,434 @@
+/* _________________________ Imports _________________________ */
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+
+/* _________________________ Website Theme _________________________ */
+
+:root {
+  --hue-1: 280;
+  --hue-2: 47;
+  --hue-3: 175;
+  --main-color-1: hsl(var(--hue-1), 100%, 60%);
+  --main-color-1: hsl(var(--hue-1), 100%, 60%);
+  --main-color-dark-1: hsl(var(--hue-1), 69%, 50%);
+  --main-color-2: hsl(var(--hue-2), 100%, 61%);
+  --main-color-dark-2: hsl(var(--hue-2), 82%, 55%);
+  --main-color-3: hsl(var(--hue-3), 100%, 37%);
+  --main-color-dark-3: hsl(var(--hue-3), 82%, 55%);
+  --section-padding: 7rem;
+}
+
+body {
+  --bg-color: hsl(var(--hue-1), 50%, 98%);
+  --bg-color-1: hsl(var(--hue-1), 100%, 95.5%);
+  --bg-color-2: #fff;
+  --bg-color-3: hsl(var(--hue-1), 100%, 98%);
+  --bg-color-transparent: rgba(255, 255, 255, 0.39);
+  --heading-color: hsl(var(--hue-1), 61%, 24%);
+  --text-color: hsl(var(--hue-1), 17%, 63%);
+}
+
+body.dark {
+  --bg-color: hsl(var(--hue-1), 19%, 15%);
+  --bg-color-1: hsl(var(--hue-1), 21%, 11%);
+  --bg-color-2: hsl(var(--hue-1), 23%, 19%);
+  --bg-color-3: hsl(var(--hue-1), 23%, 24%);
+  --bg-color-transparent: hsla(var(--hue-1), 23%, 19%, 0.6);
+  --heading-color: hsl(var(--hue-1), 100%, 95%);
+  --text-color: hsl(var(--hue-1), 14%, 51%);
+}
+
+body.dark .st1 {
+  fill: hsla(var(--hue-1), 18%, 29%)
+}
+
+body.dark .shape.square {
+  opacity: .07;
+}
+
+body.dark .toggle-btn {
+  background-color: var(--bg-color-3);
+}
+
+body.dark .toggle-btn:hover {
+  background-color: brightness(110%);
+}
+
+
+body.dark .nav-link:hover::after,
+body.dark .nav-link.active::after {
+  opacity: .6;
+}
+
+body.dark .form-input:hover {
+  filter: brightness(110%);
+}
+
+/* _________________________ General Styles _________________________ */
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--bg-color);
+  font-family: "Poppins", sans-serif;
+  transition: .3s background-color;
+}
+
+body.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+::selection {
+  background-color: hsla(var(--hue-1), 100%, 60%, 0.9);
+  color: #FFF;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.box {
+  width: 1200px;
+  padding: 0;
+  margin: 0;
+}
+
+.sub-heading {
+  color: var(--heading-color);
+  padding: .13rem .75rem;
+  margin-bottom: 1rem;
+  font-weight: 300;
+  transition: .3s color;
+  max-width: 60%;
+  text-align: center;
+}
+
+.heading {
+  color: var(--heading-color);
+  font-size: 3rem;
+  font-family: "Source Sans Pro", cursive;
+  font-weight: 800;
+  line-height: 1.3;
+  transition: .3s color;
+}
+
+.text {
+  color: var(--text-color);
+  font-size: .9rem;
+  line-height: 2.3;
+  transition: .3s color;
+}
+
+nav {
+  position: absolute;
+  top: 7rem;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  z-index: 100;
+  transition: .3s background-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      height: 4rem;
+      width: 10rem;
+      opacity: 0;
+      transition: .3s opacity;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    ul {
+      display: flex;
+      gap: 1rem;
+      font-size: .9rem;
+      color: var(--text-color);
+
+      li {
+        position: relative;
+        display: inline-block;
+        padding: .8rem;
+        transition: .3s color;
+        cursor: pointer;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: var(--main-color-1);
+          opacity: 0;
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: .3s transform, .3s opacity;
+        }
+
+        &:hover::after,
+        &.active::after {
+          opacity: 1;
+          transform: scaleX(1);
+        }
+
+      }
+    }
+  }
+
+
+}
+
+.scrolled {
+  position: fixed;
+  top: 0;
+  background-color: var(--bg-color-transparent);
+  backdrop-filter: blur(10px);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  transition: .5s background-color;
+
+  .logo {
+    opacity: 1 !important;
+  }
+
+  li {
+    color: rgb(66, 66, 66);
+    font-size: .8rem;
+    font-weight: 500;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(133, 95, 95, 0.534);
+  background-image: url('/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+.signin {
+  width: 400px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 22px;
+  backdrop-filter: blur(10px);
+  transition: .3s background-color;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #FFF;
+  }
+
+  input {
+    width: 80%;
+    height: 40px;
+    padding: 0 1rem;
+    border: none;
+    border-radius: 22px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #FFF;
+    font-size: 1rem;
+    font-weight: 300;
+    transition: .3s background-color;
+
+    &:focus {
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.664);
+    }
+  }
+
+  button {
+    width: 80%;
+    height: 40px;
+    border: none;
+    border-radius: 22px;
+    background-color: rgb(39, 150, 12);
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    font-weight: 300;
+    transition: .3s background-color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(58, 192, 24);
+    }
+  }
+}
+
+.chat {
+  width: 80%;
+  max-width: 1024px;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 0 2rem 2rem;
+  background-color: rgba(0, 0, 0, 0.164);
+  border-radius: 22px;
+  backdrop-filter: blur(10px);
+  transition: .3s background-color;
+  border: 1px solid rgba(204, 204, 204, 0.171);
+  box-shadow: rgba(122, 19, 105, 0.349) 0px 7px 29px 0px;
+
+  .messages {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    // justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: .5rem;
+
+      &:hover {
+        width: 1.2rem;
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgb(54, 54, 54);
+      border-radius: .4rem;
+    }
+
+    .message {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: auto;
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        padding: .85rem;
+        border-radius: 22px;
+        color: rgb(255, 255, 255);
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      p {
+        max-width: 60%;
+        // width: 100%;
+        padding: .8rem;
+        background-color: rgba(255, 255, 255, 0.76);
+        border-radius: 10px;
+        font-size: .9rem;
+      }
+    }
+
+    .user {
+      align-items: flex-end;
+      max-width: 65%;
+      margin-right: 2rem;
+      width: fit-content;
+      margin-left: auto;
+
+      p {
+        max-width: 100%;
+        width: 100% !important;
+        background-color: rgba(30, 172, 84, 0.288);
+        color: #FFF;
+      }
+    }
+  }
+
+  .input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-right: 2rem;
+
+    input {
+      flex: 1;
+      height: 60px;
+      padding: 0 1rem;
+      border: none;
+      border-radius: 22px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #FFF;
+      font-size: 1rem;
+      font-weight: 300;
+      transition: .3s background-color;
+      font-size: .9rem;
+
+      &:focus {
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.664);
+      }
+    }
+
+    button {
+      width: 100px;
+      height: 40px;
+      border: none;
+      border-radius: 10px;
+      background-color: rgb(39, 150, 12);
+      color: rgb(255, 255, 255);
+      font-size: 1rem;
+      font-weight: 300;
+      transition: .3s background-color;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgb(58, 192, 24);
+      }
+    }
+  }
+
+}
