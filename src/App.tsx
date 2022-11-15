@@ -16,7 +16,11 @@ function App() {
   const [message, setMessage] = useState("")
   const [messages, setMessages] = useState<MessagesProps[]>([])
   const [token, setToken] = useState("")
-  const [ws, setWs] = useState(Websocket)
+  const [ws, setWs] = useState("")
+
+  useEffect(() => {
+    const ws = Websocket
+  }, [])
 
 
   return (
