@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-
+import Websocket from './services/Websocket'
 import Cookies from 'js-cookie'
 import './styles/global.scss'
 
@@ -16,6 +16,7 @@ function App() {
   const [message, setMessage] = useState("")
   const [messages, setMessages] = useState<MessagesProps[]>([])
   const [token, setToken] = useState("")
+  const ws = Websocket
 
 
   return (
