@@ -16,7 +16,16 @@ function App() {
   const [message, setMessage] = useState("")
   const [messages, setMessages] = useState<MessagesProps[]>([])
   const [token, setToken] = useState("")
-  // const ws = Websocket
+
+  const Websocket = new WebSocket("ws://server-websocket.azurewebsites.net/");
+
+  Websocket.onopen = () => {
+    console.log("Connected to websocket");
+  };
+
+  Websocket.onmessage = (event) => {
+    console.log(event.data);
+  };
 
 
   return (
